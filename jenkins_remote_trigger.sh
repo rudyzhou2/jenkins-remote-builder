@@ -120,7 +120,8 @@ done
 JOBID=$(curl -s "$QUEUE_URL" | jq --raw-output '.executable.number')
 JOBJson=$(curl -s "$QUEUE_URL" | jq --raw-output)
 echo $JOBJson
-JOBURL=$(curl -s "$QUEUE_URL" | jq --raw-output '.executable.url')
+#JOBURL=$(curl -s "$QUEUE_URL" | jq --raw-output '.executable.url')
+JOBURL="$HOST/job/$JOBNAME/$JOBID/"
 echo $JOBURL
 if [ -z "$JOBID" ];
 then
