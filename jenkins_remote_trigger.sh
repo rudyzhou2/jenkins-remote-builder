@@ -121,7 +121,7 @@ JOBID=$(curl -s "$QUEUE_URL" | jq --raw-output '.executable.number')
 JOBJson=$(curl -s "$QUEUE_URL" | jq --raw-output)
 echo $JOBJson
 JOBURL=$(curl -s "$QUEUE_URL" | jq --raw-output '.executable.url')
-
+echo $JOBURL
 if [ -z "$JOBID" ];
 then
     if [ $QUIET -eq 0 ];then
