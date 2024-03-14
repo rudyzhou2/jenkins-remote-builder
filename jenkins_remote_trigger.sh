@@ -139,12 +139,14 @@ fi
 STATUS=""
 while [ "$STATUS" != 200 ]
 do
-  sleep 1
+  sleep 10
   STATUS=`curl -s -o /dev/null -w "%{http_code}" "${JOBURL}"consoleText`
+  echo $STATUS
 done
 
 JOBURLJSON="$JOBURL"api/json?pretty=true
 BUILDING=$(curl -s "$JOBURLJSON" |jq --raw-output '.building')
+echo "Job building status is $BUILDING"
 while $BUILDING; do
     BUILDING=$(curl -s "$JOBURLJSON" |jq --raw-output '.building')
     if [ $QUIET -eq 0 ];then
